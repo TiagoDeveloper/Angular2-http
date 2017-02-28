@@ -3,6 +3,7 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Pessoa } from './pessoa';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class PessoaService {
@@ -16,6 +17,7 @@ export class PessoaService {
     return this.http.get(this.url)
                 .map(this.tratamentoJson);
   }
+
   deletePessoa(id: number): Observable<Pessoa> {
     let url = `${this.url}/${id}`;
     return this.http.delete(url)
